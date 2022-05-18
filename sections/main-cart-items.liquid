@@ -57,7 +57,7 @@
 
             <tbody>
               {%- for item in cart.items -%}
-                <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                <tr data-collection="{{ item.product.collections[0].handle }}" class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
                   <td class="cart-item__media">
                     {% if item.image %}
                       {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
@@ -73,7 +73,7 @@
                         </div>
                     {% endif %}
                   </td>
-
+                  <!-- <script>console.log({{ item.product.collections | json }});</script> -->
                   <td class="cart-item__details">
                     {%- if section.settings.show_vendor -%}
                       <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
@@ -292,7 +292,12 @@
     <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
     <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
   </form>
+  <gift-with-purchase cart-items={{cart.items}}>
+    <div class="gwp-wrapper">
+    </div>
+  </gift-with-purchase>
 </cart-items>
+
 
 {% schema %}
 {
