@@ -180,7 +180,7 @@ class GiftWithPurchase extends HTMLElement {
 
   getGWPInfo = async () => {
     const collectionsAmount = await this.getCollectionAmount();
-    fetch("http://127.0.0.1:2053/gift-with-purchase", {
+    fetch("https://shopify-test-be.herokuapp.com/gift-with-purchase", {
       method: "POST",
       headers: {
         Accept: "application/json",
